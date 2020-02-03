@@ -1,5 +1,15 @@
 h1 {
   font-size: xxx-large;
   text-align: center;
-  margin-top: 1%;
+  margin-top: 1.5%;
+  margin-bottom: 2%;
+}
+
+.main-city{
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.margin-left {
+  margin-left: 3%
 }

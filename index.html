@@ -18,22 +18,33 @@
     <![endif]-->
     <h1 id="title">Weather App</h1>
 
-    <form action="">
+    <form action="" class="margin-left">
       Type in a City:
       <input type="text" value="" id="city-input">
       <input type="submit" id="city-submit">
     </form>
+    <br>
+    <br>
 
-    <article class="message is-dark">
+    <article class="message is-link main-city">
       <div class="message-header">
         <h2 id="city"></h2>
         <!-- <button class="delete" aria-label="delete"></button> -->
       </div>
-      <div class="message-body">
-        
+      <div class="message-body" id="message-body">
+        <div id="temperature"></div>
+        <br>
+        <div id="descript"></div>
       </div>
+      
+      <button class="button is-primary" id="save-city">Save City</button>
     </article>
 
+    <h3 class="margin-left"><b>Saved Cities:</b></h3>
+    <br>
+    <ul id="saved-cities-list" class="margin-left">
+
+    </ul>
     <script src="script.js"></script>
   </body>
 </html>
