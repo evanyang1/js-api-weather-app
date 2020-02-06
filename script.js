@@ -12,20 +12,36 @@ if ( JSON.parse(localStorage.getItem('cities'))) {
   });
 }
 
+const createWeatherDiv = (label, item) => {
+  let div = document.createElement('div')
+  div.innerHTML = `
+    <p>${label}: ${item}</p>
+  `
+  document.getElementById('message-body').append(div)
+}
+
 document.getElementById('city-submit').addEventListener('click', event => {
   event.preventDefault()
   let city = document.getElementById('city-input').value
   //console.log(city)
-  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=b2c91f8d3c1ab430050a602b2518ffbb`)
+  fetch(`http://api.weatherapi.com/v1/current.json?key=d02a36d4df9a4cccba2225013200502&q=${city}`)
     .then(r => r.json())
     .then(res => {
       console.log(res)
-      let {temp} = res.main, {name} = res
-      document.getElementById('city').textContent = name
+      document.getElementById('city').textContent = `${res.location.name}, ${res.location.region}, ${res.location.country}`
+      document.getElementById('message-body').innerHTML = ''
+      createWeatherDiv('Temperature (F)', res.current.temp_f)
+      createWeatherDiv('Feels Like (F)', res.current.feelslike_f)
+      createWeatherDiv('Humidity', res.current.humidity)
+      createWeatherDiv('Wind', `${res.current.wind_mph}mph ${res.current.wind_dir}`)
+      createWeatherDiv('UV', res.current.uv)
+      createWeatherDiv('Precipitation (mm)', res.current.precip_mm)
+      createWeatherDiv('Description', res.current.condition.text)
       //console.log(res.weather[0.description])
-      let description = res.weather[0].description 
+      /*let description = res.weather[0].description 
       document.getElementById('temperature').textContent = `Temperature (F): ${kelvinToFarenheit(temp).toFixed(2)}`
-      document.getElementById('descript').textContent = `Description: ${description}`
+      document.getElementById('descript').textContent = `Description: ${description}`*/
+      
     })
 })
 
