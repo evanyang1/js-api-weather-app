@@ -24,7 +24,7 @@ document.getElementById('city-submit').addEventListener('click', event => {
   event.preventDefault()
   let city = document.getElementById('city-input').value
   //console.log(city)
-  fetch(`http://api.weatherapi.com/v1/current.json?key=d02a36d4df9a4cccba2225013200502&q=${city}`)
+  fetch(`https://api.weatherapi.com/v1/current.json?key=d02a36d4df9a4cccba2225013200502&q=${city}`)
     .then(r => r.json())
     .then(res => {
       console.log(res)
